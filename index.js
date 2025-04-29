@@ -38,6 +38,11 @@ app.use((req, res, next) => {
   next();
 });
 
+// Ping para actualizar server des de GitHub
+app.get('/ping', (req, res) => {
+  res.status(200).send('pong');
+});
+
 app.use(express.json());
 app.use(morgan('dev'));
 app.use(cookieParser());
