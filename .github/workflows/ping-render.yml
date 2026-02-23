@@ -2,11 +2,11 @@ name: Ping Render App Every 5 Minutes
 
 on:
   schedule:
-   - cron: "2-59/5 * * * *"
+    - cron: "2-59/5 * * * *" # cada 5 min, evitando :00
   workflow_dispatch:
-  push:
+  push: # temporal, quitar cuando confirmes schedule
     paths:
-      - ".github/workflows/ping-render.yml" # temporal
+      - ".github/workflows/ping-render.yml"
 
 jobs:
   ping:
