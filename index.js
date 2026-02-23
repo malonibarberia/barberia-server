@@ -42,6 +42,7 @@ app.use((req, res, next) => {
 
 // Ping para actualizar server des de GitHub
 app.get('/ping', (req, res) => {
+  console.log('PING', new Date().toISOString());
   res.status(200).send('pong');
 });
 
