@@ -4,10 +4,19 @@ on:
   schedule:
     - cron: "*/5 * * * *"
   workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/ping-render.yml" # temporal
 
 jobs:
   ping:
     runs-on: ubuntu-latest
     steps:
+      - name: Debug time UTC
+        run: date -u
+
       - name: Ping backend on Render
-        run: curl --fail --silent --show-error --max-time 15 https://barberia-server.onrender.com/ping
+        run: |
+          curl --fail --silent --show-error --max-time 30 \
+            -w "\nHTTP %{http_code}\n" \
+            https://barberia-server.onrender.com/ping
